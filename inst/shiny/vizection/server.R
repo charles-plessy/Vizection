@@ -192,7 +192,7 @@ shinyServer(function(input, output, session) {
   corMat <- eventReactive(input$updateCorMat, {
     withProgress(message = 'correlation matrice', {
       incProgress(1/4, detail = "TPM")
-      a <- subgenes() %>% extract(-1, ) %>% TPM
+      a <- subgenes() %>% head(-1) %>% TPM
       incProgress(2/4, detail = "log1p")
       b <- a %>% log1p
       incProgress(3/4, detail = "cor")
